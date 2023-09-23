@@ -4,8 +4,7 @@ const ffmpeg = require('fluent-ffmpeg');
 module.exports = async (url, path) => {
   return new Promise((resolve, reject) => {
     const forbid = /[\/\?<>\\:\*\|"]/g;
-
-    path = path.replace(forbid, ' - ')
+    const title = path.split('/')[3].replace(forbid, '-');
 
     try {
       let stream = ytdl(url, {
@@ -14,7 +13,7 @@ module.exports = async (url, path) => {
       
       let start = Date.now();
 
-      console.log(`\nDownloading ${path.split('/')[3]}`);
+      console.log(`\nDownloading ${title}`);
     
       ffmpeg(stream)
         .audioBitrate(128)
