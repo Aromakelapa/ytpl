@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Aromakelapa/ytpl#readme",
   "dependencies": {
+    "@distube/ytdl-core": "^4.13.5",
     "fluent-ffmpeg": "^2.1.2",
     "ytdl-core": "^4.11.5",
     "ytfps": "^1.1.0"
