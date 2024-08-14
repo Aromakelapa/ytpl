@@ -7,18 +7,25 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-
 module.exports = () => {
   return new Promise((resolve, reject) => {
     rl.question('Playlist URL : ', async (url) => {
       ytfps(url)
         .then((pl) => {
           fs.writeFileSync('playlist.json', JSON.stringify(pl));
-          resolve(pl);
+          console.log(`Playlist Name : ${pl.title}\nVideo Count : ${pl.video_count}`);
+          console.log('Select Format :\n1. MP3\n2. FLAC\n');
+
+          rl.question('Format : ', async (format) => {
+            if (format == '2') {
+              resolve({ ...pl, format });
+            } else {
+              resolve({ ...pl, format: '1'});
+            };
+            rl.close();
+          });
         })
         .catch((err) => reject(err.message));
-      rl.close();
     });
-
-  })
-}
+  });
+};
