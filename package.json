@@ -1,6 +1,6 @@
 {
   "name": "ytpl",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "YouTube playlist to MP3 downloader.",
   "main": "index.js",
   "scripts": {

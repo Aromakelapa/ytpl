@@ -11,6 +11,8 @@ const prompt = require('prompt-sync')();
   const title = pl.title;
   const format = '.mp3';
 
+  console.log(`\nDownloading playlist ${title} by ${author}\n`);
+  // process.exit();
   for (let i in pl.videos) {
     if (!fs.existsSync('downloads')) fs.mkdirSync('downloads');
     if (!fs.existsSync(`downloads/${author}`)) fs.mkdirSync(`downloads/${author}`);
@@ -18,7 +20,7 @@ const prompt = require('prompt-sync')();
     if (fs.existsSync(`downloads/${author}/${title}/${pl.videos[i].title.replace(forbid, '-')}${format}`)) {
       continue;
     };
-
+    console.log(`${pl.videos[i].title}`);
     await download(pl.videos[i].url, `downloads/${author}/${title}/${pl.videos[i].title.replace(forbid, '-')}${format}`);
   }
 

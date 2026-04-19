@@ -23,7 +23,7 @@ module.exports = async (url, output) => {
           reject(err.message);
         })
         .on('end', () => {
-          console.log('\nDownload completed! MP3 file has been saved\n');
+          console.log('\nDownload completed!\n');
           resolve();
         })
         .pipe(fs.createWriteStream(output));
